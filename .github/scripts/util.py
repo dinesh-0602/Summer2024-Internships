@@ -105,12 +105,11 @@ def embedTable(listings, filepath, offSeason=False):
     newText = ""
     readingTable = False
     with open(filepath, "r") as f:
-        for line in f.readlines():
+        for line in f:
             if readingTable:
                 if "|" not in line and "TABLE_END" in line:
                     newText += line
                     readingTable = False
-                continue
             else:
                 newText += line
                 if "TABLE_START" in line:
